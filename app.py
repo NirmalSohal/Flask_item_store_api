@@ -6,9 +6,10 @@ from resources.users import UserRegister
 from resources.item import Item,ItemList
 from db import db
 from resources.store import Store,StoreList
+import os
 
 app=Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL','sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.secret_key='Nirmal'
 api=Api(app)
